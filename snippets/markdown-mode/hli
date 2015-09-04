@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Highlight Language Inline
+# key: hli
+# binding: direct-keybinding
+# contributor: Yulong Niu <yulong.niu@aol.com>
+# --
+\`$0\`{:.language-${1:bash}}

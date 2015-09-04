@@ -1,0 +1,10 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: Highlight Language
+# key: hl
+# binding: direct-keybinding
+# contributor: Yulong Niu <yulong.niu@aol.com>
+# --
+
+{% codeblock lang:${1:bash} ${2:description} %}
+$0
+{% endcodeblock %}
