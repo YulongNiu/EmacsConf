@@ -34,6 +34,8 @@
 (require 'setup-helm-gtags)
 (require 'setup-cedet)
 (require 'setup-editing)
+(require 'setup-web)
+(require 'setup-lisp)
 
 (windmove-default-keybindings)
 
@@ -58,7 +60,6 @@
 ;; company-c-headers ;;
 ;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'company-backends 'company-c-headers)
-;; (add-to-list 'company-c-headers-path-system "/usr/include/c++/5.1.1/")
 
 (setq
  c-default-style "linux" ;; set style to "linux"
@@ -137,13 +138,6 @@
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'ess-mode-hook #'rainbow-delimiters-mode)
 
-;;;;;;;;;;;;;;;;;;;;;
-;rainbow mode CSS
-;;;;;;;;;;;;;;;;;;;;;
-(require 'rainbow-mode)
-(dolist (hook '(markdown-mode-hook css-mode-hook html-mode-hook sass-mode-hook ess-mode-hook inferior-ess-mode-hook))
-  (add-hook hook 'rainbow-turn-on))
-
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ; auto-complete
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -178,8 +172,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;
 (add-hook 'c-mode-common-hook 'hs-minor-mode)
 (add-hook 'ess-mode-hook 'hs-minor-mode)
-
-;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -275,33 +267,6 @@
 ;;;;;;;;;;;
 (setq-default ispell-program-name "aspell")
 
-;;;;;;;;;;;;;;
-;emmet-mode
-;;;;;;;;;;;;;
-(require 'emmet-mode)
-(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
-(add-hook 'html-mode-hook 'emmet-mode)
-(add-hook 'web-mode-hook 'emmet-mode)
-(add-hook 'css-mode-hook  'emmet-mode)
-
-
-;;;;;;;;;;;;;;
-;web-mode
-;;;;;;;;;;;;;;;
-(require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(defun my-web-mode-hook ()
-  "Hooks for Web mode."
-  (setq web-mode-markup-indent-offset 2)
-)
-(add-hook 'web-mode-hook  'my-web-mode-hook)
 
 
 
@@ -313,61 +278,6 @@
 (add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-
-;; ;;;;;;;;;;;;;;;;;
-;; ;auctex
-;; ;;;;;;;;;;;;;;;;;
-;; (load "auctex.el" nil t t)
-;; (load "preview-latex.el" nil t t)
-;; (setq TeX-auto-save t)
-;; (setq TeX-parse-self t)
-;; (setq-default TeX-master nil)
-;; (mapc (lambda (mode)
-;; 	(add-hook 'LaTeX-mode-hook mode))
-;;       (list 'auto-complete-mode
-;; 	    'auto-fill-mode
-;; 	    'LaTeX-math-mode
-;; 	    'turn-on-reftex
-;; 	    'linum-mode))
-;; (add-hook 'LaTeX-mode-hook
-;;           (lambda ()
-;;             (setq TeX-auto-untabify t     ; remove all tabs before saving
-;;                   TeX-engine 'xetex       ; use xelatex default
-;;                   TeX-show-compilation t) ; display compilation windows
-;;             (TeX-global-PDF-mode t)       ; PDF mode enable, not plain
-;;             (setq TeX-save-query nil)
-;;             (imenu-add-menubar-index)
-;;             (define-key LaTeX-mode-map (kbd "TAB") 'TeX-complete-symbol)))
-;; ; set pdf view tool
-;; (setq TeX-view-program-list '(("Evince" "evince %o")))
-;; (cond
-;;  ((eq system-type 'windows-nt)
-;;   (add-hook 'LaTeX-mode-hook
-;;             (lambda ()
-;;               (setq TeX-view-program-selection '((output-pdf "SumatraPDF")
-;;                                                  (output-dvi "Yap"))))))
-
-;;  ((eq system-type 'gnu/linux)
-;;   (add-hook 'LaTeX-mode-hook
-;;             (lambda ()
-;;               (setq TeX-view-program-selection '((output-pdf "Evince")
-;;                                                  (output-dvi "Evince")))))))
-;; ; XeLaTeX
-;; (add-hook 'LaTeX-mode-hook (lambda()
-;; 			     (add-to-list 'TeX-command-list '("XeLaTeX" "%`xelatex%(mode)%' %t" TeX-run-TeX nil t))
-;; 			     (setq TeX-command-default "XeLaTeX")
-;; 			     (setq TeX-save-query  nil )
-;; 			     (setq TeX-show-compilation t)
-;; 			     ))
-
-
-
-;;;;;;;;;;;;;;;;;
-;js2
-;;;;;;;;;;;;;;;;;
-(require 'js2-mode)
-(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 
 
@@ -391,72 +301,7 @@
 	    (define-key inferior-octave-mode-map [down]
 	      'comint-next-input)))
 
-;;;;;;;;;;;;
-;; Scheme
-;;;;;;;;;;;;
-(require 'cmuscheme)
-(setq scheme-program-name "petite")         ;; 如果用 Petite 就改成 "petite"
-
-
-;; bypass the interactive question and start the default interpreter
-(defun scheme-proc ()
-  "Return the current Scheme process, starting one if necessary."
-  (unless (and scheme-buffer
-               (get-buffer scheme-buffer)
-               (comint-check-proc scheme-buffer))
-    (save-window-excursion
-      (run-scheme scheme-program-name)))
-  (or (scheme-get-process)
-      (error "No current process. See variable `scheme-buffer'")))
-
-
-(defun scheme-split-window ()
-  (cond
-   ((= 1 (count-windows))
-    (delete-other-windows)
-    (split-window-vertically (floor (* 0.68 (window-height))))
-    (other-window 1)
-    (switch-to-buffer "*scheme*")
-    (other-window 1))
-   ((not (find "*scheme*"
-               (mapcar (lambda (w) (buffer-name (window-buffer w)))
-                       (window-list))
-               :test 'equal))
-    (other-window 1)
-    (switch-to-buffer "*scheme*")
-    (other-window -1))))
-
-
-(defun scheme-send-last-sexp-split-window ()
-  (interactive)
-  (scheme-split-window)
-  (scheme-send-last-sexp))
-
-
-(defun scheme-send-definition-split-window ()
-  (interactive)
-  (scheme-split-window)
-  (scheme-send-definition))
-
-(add-hook 'scheme-mode-hook
-  (lambda ()
-    (paredit-mode 1)
-    (define-key scheme-mode-map (kbd "<f5>") 'scheme-send-last-sexp-split-window)
-    (define-key scheme-mode-map (kbd "<f6>") 'scheme-send-definition-split-window)))
-
-
-
-
-;;;;;;;;;;;;;;;;;;
-;Racket mode
-;;;;;;;;;;;;;;;;;
-(require 'racket-mode)
-(add-hook 'racket-mode-hook
-  (lambda ()
-    (paredit-mode 1)))
-
 (require 'paredit-menu)
-
 
 ;;;;;;;;;;;;;;
 ;ipython 
