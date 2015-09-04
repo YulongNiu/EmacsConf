@@ -52,7 +52,10 @@
     (define-key scheme-mode-map (kbd "<f6>") 'scheme-send-definition-split-window)))
 
 
-
+;;;;;;;;;;;;;;;;;
+;; predit-menu ;;
+;;;;;;;;;;;;;;;;;
+(require 'paredit-menu)
 
 ;;;;;;;;;;;;;;;;;
 ;; Racket mode ;;

@@ -30,22 +30,18 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(require 'misc)
 (require 'setup-helm)
 (require 'setup-helm-gtags)
 (require 'setup-cedet)
 (require 'setup-editing)
+(require 'setup-c)
+(require 'setup-python)
 (require 'setup-web)
 (require 'setup-lisp)
 
 (windmove-default-keybindings)
 
-;;;;;;;;;;;;;;;;;;;
-;; function-args ;;
-;;;;;;;;;;;;;;;;;;;
-(require 'function-args)
-(fa-config-default)
-(define-key c-mode-map  [(tab)] 'company-complete)
-(define-key c++-mode-map  [(tab)] 'company-complete)
 
 ;;;;;;;;;;;;;
 ;; company ;;
@@ -61,23 +57,19 @@
 ;;;;;;;;;;;;;;;;;;;;;;;
 (add-to-list 'company-backends 'company-c-headers)
 
-(setq
- c-default-style "linux" ;; set style to "linux"
- )
 
-(global-set-key (kbd "RET") 'newline-and-indent)  ; automatically indent when press RET
 
-;; activate whitespace-mode to view all whitespace characters
-(global-set-key (kbd "C-c w") 'whitespace-mode)
+;;;;;;;;;;;;;;;;;;;
+;; function-args ;;
+;;;;;;;;;;;;;;;;;;;
+(require 'function-args)
+(fa-config-default)
+(define-key c-mode-map  [(tab)] 'company-complete)
+(define-key c++-mode-map  [(tab)] 'company-complete)
 
-;; show unncessary whitespace that can mess up your diff
-(add-hook 'prog-mode-hook (lambda () (interactive) (setq show-trailing-whitespace 1)))
 
-;; use space to indent by default
-(setq-default indent-tabs-mode nil)
 
-;; set appearance of a tab that is represented by 4 spaces
-(setq-default tab-width 4)
+
 
 ;; Compilation
 (global-set-key (kbd "<f5>") (lambda ()
@@ -94,30 +86,6 @@
  gdb-show-main t
  )
 
-;; Package: clean-aindent-mode
-(require 'clean-aindent-mode)
-(add-hook 'prog-mode-hook 'clean-aindent-mode)
-
-;; Package: dtrt-indent
-(require 'dtrt-indent)
-(dtrt-indent-mode 1)
-
-;; Package: ws-butler
-(require 'ws-butler)
-(add-hook 'prog-mode-hook 'ws-butler-mode)
-
-;smartparens
-;;;;;;;;;;;;;;;;;;;;;
-(require 'smartparens-config)
-(setq sp-base-key-bindings 'paredit)
-(setq sp-autoskip-closing-pair 'always)
-(setq sp-hybrid-kill-entire-symbol nil)
-(sp-use-paredit-bindings)
-(show-smartparens-global-mode t)
-(smartparens-global-mode t)
-(add-hook 'inferior-ess-mode-hook 'show-smartparens-mode)
-(add-hook 'inferior-ess-mode-hook 'smartparens-mode)
-
 ;; Package: projejctile
 (require 'projectile)
 (projectile-global-mode)
@@ -128,15 +96,7 @@
 (setq projectile-completion-system 'helm)
 (setq projectile-indexing-method 'alien)
 
-;; Package zygospore
-(global-set-key (kbd "C-x 1") 'zygospore-toggle-delete-other-windows)
 
-;;;;;;;;;;;;;;
-;rainbow-delimiters
-;;;;;;;;;;;;;;
-(require 'rainbow-delimiters)
-(add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
-(add-hook 'ess-mode-hook #'rainbow-delimiters-mode)
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ; auto-complete
@@ -150,55 +110,6 @@
 ;; ;;;;;;;;;
 ;; (require 'ess-site)
 ;; (set-face-attribute 'popup-tip-face    nil   :background "#FFF68F" :foreground "black")
-
-
-;;;;;;;;;;;;;;;;;;
-;; indent-guide
-;;;;;;;;;;;;;;;;;;
-(require 'indent-guide)
-(set-face-background 'indent-guide-face "gray")
-(add-hook 'prog-mode-hook 'indent-guide-mode)
-(add-hook 'ess-mode-hook 'indent-guide-mode)
-(add-hook 'markdown-mode-hook 'indent-guide-mode)
-
-;;;;;;;;;;;;;;;;;;
-;google-c-style
-;;;;;;;;;;;;;;;;;;
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
-
-;;;;;;;;;;;;;;;;;;;;;;;;
-;open hs-mode
-;;;;;;;;;;;;;;;;;;;;;;;
-(add-hook 'c-mode-common-hook 'hs-minor-mode)
-(add-hook 'ess-mode-hook 'hs-minor-mode)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;
-;open linum mode
-;;;;;;;;;;;;;;;;;;;;;;;;;
-(setq linum-format "%4d \u2502")
-(add-hook 'prog-mode-hook 'linum-mode)
-(add-hook 'ess-mode-hook 'linum-mode)
-(add-hook 'markdown-mode-hook 'linum-mode)
-
-;;;;;;;;;;;;;;;;;;;;;;;;
-;use ido mode
-;;;;;;;;;;;;;;;;;;;;;;;;
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;use ibuffer
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;nyan-mode
-;;;;;;;;;;;;;;;;;;;;;;;;;;
-(nyan-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;yasnippet
@@ -301,14 +212,6 @@
 	    (define-key inferior-octave-mode-map [down]
 	      'comint-next-input)))
 
-(require 'paredit-menu)
-
-;;;;;;;;;;;;;;
-;ipython 
-;;;;;;;;;;;;;
-(defun ipython ()
-    (interactive)
-    (term "/usr/bin/ipython"))
 
 
 ;;;;;;;;;;;;;
@@ -316,7 +219,6 @@
 ;;;;;;;;;;;;;;
 (eval-after-load "sql"
   '(load-library "sql-indent"))
-
 
 ;;;;;;;;;;;;;;
 ; multi-term					;

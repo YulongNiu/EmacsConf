@@ -13,7 +13,7 @@ I am working some data analysis, and Emacs brings me a lot of fun. I combine R, 
 * Path of `.emacs.d`: `~/.emacs.d/`
 
 **Files:**
-* `init.el`: Emacs configure files, you may want to change it according to the platform like `.emacs`. For the folders `custom` and `snippets`, please copy them to `.emacs.d`
+* `init.el`: Emacs configure files, you may want to change it according to the platform like `.emacs`. For the folders `custom` and `snippets`, please copy them to `.emacs.d`.
 
 * `custom`: Sorted configure files for separated topics.
 
