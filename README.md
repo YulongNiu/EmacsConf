@@ -19,9 +19,9 @@ I am working some data analysis, and Emacs brings me a lot of fun. I combine R, 
 
 * `snippets`: Addtional YASnippet templates.
 
-## 0 Replace with your configure ##
+## 0. Replace with your configure ##
 
-### 1. `init.el` ###
+### 0.1 `init.el` ###
 
 * C/C++ headers path
 
