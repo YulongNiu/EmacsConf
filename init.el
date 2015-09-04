@@ -13,7 +13,7 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Installed Package List
-;; (auto-compile auto-complete auto-complete-c-headers auto-complete-clang color-theme dash faceup function-args geiser google-c-style helm helm-gtags helm-swoop indent-guide ipython js2-mode julia-mode markdown-mode web-mode emmet-mode nyan-mode packed paredit paredit-menu pep8 popup pyflakes pylint pymacs python-mode python-pep8 quack racket-mode rainbow-delimiters rainbow-mode smartparens solarized-theme sql-indent sr-speedbar swiper yasnippet multi-term)
+;; (auto-compile auto-complete color-theme dash faceup function-args geiser google-c-style helm helm-gtags helm-swoop indent-guide ipython js2-mode julia-mode markdown-mode web-mode emmet-mode nyan-mode packed paredit paredit-menu pep8 popup pyflakes pylint pymacs python-mode python-pep8 quack racket-mode rainbow-delimiters rainbow-mode smartparens solarized-theme sql-indent sr-speedbar swiper yasnippet multi-term)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; set CEDET
@@ -39,6 +39,7 @@
 (require 'setup-python)
 (require 'setup-web)
 (require 'setup-lisp)
+(require 'setup-r)
 
 (windmove-default-keybindings)
 
@@ -98,18 +99,8 @@
 
 
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ; auto-complete
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; (require 'auto-complete)
-;; (require 'auto-complete-config)
-;; (ac-config-default)
 
-;; ;;;;;;;;;
-;; ;; ess ;;
-;; ;;;;;;;;;
-;; (require 'ess-site)
-;; (set-face-attribute 'popup-tip-face    nil   :background "#FFF68F" :foreground "black")
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;yasnippet
