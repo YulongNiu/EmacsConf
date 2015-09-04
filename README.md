@@ -48,6 +48,13 @@ $ gcc -xc++ -E -v -
      '(ess-user-full-name "Yulong Niu")
 ```
 
+* MathJax path
+
+``` emacs
+ '(markdown-command
+   "pandoc -f markdown -t html -s --mathjax=/home/Yulong/Biotools/MathJax-2.5-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML --highlight-style espresso")
+```
+
 
 ## 1. C ##
 
