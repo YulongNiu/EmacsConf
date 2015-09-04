@@ -26,14 +26,10 @@ I am working some data analysis, and Emacs brings me a lot of fun. I combine R, 
 * C/C++ headers path
 
 ``` Emacs Lisp
-...
-
 '(company-c-headers-path-system
    (quote
     ("/usr/include/" "/usr/local/include/" "/usr/include/c++/5.1.1/" "/usr/include/c++/5.1.1/x86_64-redhat-linux/" "/usr/include/c++/5.1.1/backward/")))
     '(ess-roxy-str "##'")
-
-...
 ```
 
 Get the headers path
@@ -47,13 +43,9 @@ $ gcc -xc++ -E -v -
 
 
 ``` Emacs Lisp
-...
-
      ("examples" . "")
      ("author" . "Yulong Niu \\email{niuylscu@@gmail.com}"))))
      '(ess-user-full-name "Yulong Niu")
-
-...
 ```
 
 
