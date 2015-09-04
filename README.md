@@ -25,7 +25,7 @@ I am working some data analysis, and Emacs brings me a lot of fun. I combine R, 
 
 * C/C++ headers path
 
-``` Emacs Lisp
+``` emacs
 '(company-c-headers-path-system
    (quote
     ("/usr/include/" "/usr/local/include/" "/usr/include/c++/5.1.1/" "/usr/include/c++/5.1.1/x86_64-redhat-linux/" "/usr/include/c++/5.1.1/backward/")))
@@ -42,7 +42,7 @@ $ gcc -xc++ -E -v -
 * ESS Roxygen
 
 
-``` Emacs Lisp
+``` emacs
      ("examples" . "")
      ("author" . "Yulong Niu \\email{niuylscu@@gmail.com}"))))
      '(ess-user-full-name "Yulong Niu")
