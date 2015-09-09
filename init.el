@@ -13,7 +13,75 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Installed Package List
-;; (auto-compile auto-complete color-theme dash faceup function-args geiser google-c-style helm helm-gtags helm-swoop indent-guide ipython js2-mode julia-mode markdown-mode web-mode emmet-mode nyan-mode packed paredit paredit-menu pep8 popup pyflakes pylint pymacs python-mode python-pep8 quack racket-mode rainbow-delimiters rainbow-mode smartparens solarized-theme sql-indent sr-speedbar swiper yasnippet multi-term)
+;; '(anzu
+;;   async
+;;   auto-compile
+;;   auto-complete
+;;   bind-key
+;;   clean-aindent-mode
+;;   color-theme
+;;   comment-dwim-2
+;;   company
+;;   company-c-headers
+;;   company-irony
+;;   ctable
+;;   dash
+;;   diminish
+;;   dtrt-indent
+;;   duplicate-thing
+;;   emmet-mode
+;;   epl
+;;   ess
+;;   ess-R-data-view
+;;   faceup
+;;   function-args
+;;   geiser
+;;   ggtags
+;;   google-c-style
+;;   helm
+;;   helm-core
+;;   helm-gtags
+;;   helm-projectile
+;;   helm-swoop
+;;   iedit
+;;   indent-guide
+;;   ipython
+;;   irony
+;;   js2-mode
+;;   julia-mode
+;;   markdown-mode
+;;   multi-term
+;;   nyan-mode
+;;   packed
+;;   paredit
+;;   paredit-menu
+;;   pep8
+;;   pkg-info
+;;   popup
+;;   pos-tip
+;;   projectile
+;;   pyflakes
+;;   pylint
+;;   pymacs
+;;   python-mode
+;;   python-pep8
+;;   quack
+;;   racket-mode
+;;   rainbow-delimiters
+;;   rainbow-mode
+;;   s
+;;   smartparens
+;;   solarized-theme
+;;   sql-indent
+;;   sr-speedbar
+;;   swiper
+;;   undo-tree
+;;   use-package
+;;   volatile-highlights
+;;   web-mode
+;;   ws-butler
+;;   zygospore
+;;   yasnippet)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; set CEDET
